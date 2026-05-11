@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael D'Aguiar | Tecnologia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        :root {
+            --primary: 30 64 175;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: rgb(30 64 175);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="tail-container bg-slate-50 text-slate-700">
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-bold text-2xl leading-none pt-0.5">R</div>
+                <div>
+                    <span class="heading-font text-2xl font-semibold tracking-tight text-slate-900">rdaguiar</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="nav-link text-slate-600 hover:text-slate-900">Início</a>
+                <a href="sobre-mim.html" class="nav-link text-slate-600 hover:text-slate-900">Sobre mim</a>
+                <a href="computadores.html" class="nav-link text-slate-600 hover:text-slate-900">Computadores</a>
+                <a href="notebooks.html" class="nav-link text-slate-600 hover:text-slate-900">Notebooks</a>
+                <a href="acessorios.html" class="nav-link text-slate-600 hover:text-slate-900">Acessórios</a>
+                <a href="contatos.html" class="nav-link text-slate-600 hover:text-slate-900">Contato</a>
+            </div>
+
+            <a href="contatos.html" 
+               class="px-6 py-3 bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold rounded-2xl transition-colors">
+                Fale comigo
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO / HOME -->
+    <header class="hero-bg pt-16 pb-24">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="heading-font text-5xl md:text-6xl font-semibold text-slate-900 leading-tight mb-6">
+                Tecnologia com <span class="text-blue-700">propósito</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg text-slate-600 mb-12">
+                Curadoria de produtos de tecnologia com as melhores recomendações. 
+                Produtos selecionados para entregar performance e confiabilidade.
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
+                <!-- Botão Sobre Mim -->
+                <a href="sobre-mim.html" 
+                   class="group bg-white rounded-3xl overflow-hidden border border-slate-100 hover:border-blue-200 card-hover flex flex-col items-center p-8">
+                    <div class="w-20 h-20 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7" />
+                        </svg>
+                    </div>
+                    <span class="font-semibold text-lg">Sobre mim</span>
+                </a>
+
+                <!-- Computadores -->
+                <a href="computadores.html" 
+                   class="group bg-white rounded-3xl overflow-hidden border border-slate-100 hover:border-blue-200 card-hover flex flex-col items-center p-8">
+                    <div class="w-20 h-20 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2" />
+                        </svg>
+                    </div>
+                    <span class="font-semibold text-lg">Computadores</span>
+                </a>
+
+                <!-- Notebooks -->
+                <a href="notebooks.html" 
+                   class="group bg-white rounded-3xl overflow-hidden border border-slate-100 hover:border-blue-200 card-hover flex flex-col items-center p-8">
+                    <div class="w-20 h-20 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2" />
+                        </svg>
+                    </div>
+                    <span class="font-semibold text-lg">Notebooks</span>
+                </a>
+
+                <!-- Acessórios -->
+                <a href="acessorios.html" 
+                   class="group bg-white rounded-3xl overflow-hidden border border-slate-100 hover:border-blue-200 card-hover flex flex-col items-center p-8">
+                    <div class="w-20 h-20 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 10l4.553-2.276L20 10V18H4V6L8.553 3.724 12 6 15.447 3.724 20 6" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 13v5" />
+                        </svg>
+                    </div>
+                    <span class="font-semibold text-lg">Acessórios</span>
+                </a>
+
+                <!-- Contatos -->
+                <a href="contatos.html" 
+                   class="group bg-white rounded-3xl overflow-hidden border border-slate-100 hover:border-blue-200 card-hover flex flex-col items-center p-8">
+                    <div class="w-20 h-20 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 8l7.89 5.26a2.01 2.01 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2" />
+                        </svg>
+                    </div>
+                    <span class="font-semibold text-lg">Contato</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm">© 2026 RDAguiar. Todos os direitos reservados.</p>
+            <p class="text-xs mt-2">Site desenvolvido para divulgação de produtos afiliados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script
+        tailwind.config = {
+            content: [],
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
+</body>
+</html>
