@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Loja - RDAGUIAR</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        .admin-table th, .admin-table td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        .admin-table th { background: #f8f9fa; }
+        .btn-edit { background: #ffc107; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; }
+        .btn-save { background: #28a745; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; margin-top: 20px; float: right;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerenciamento de Produtos</h1>
+        <p>Altere os preços e links abaixo e clique em salvar.</p>
+        
+        <table class="admin-table" id="tabelaEdicao">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço (R$)</th>
+                    <th>Link de Venda</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="corpoTabela">
+                <!-- Os produtos vão aparecer aqui via JavaScript -->
+            </tbody>
+        </table>
+
+        <button class="btn-save" onclick="salvarAlteracoes()">Salvar Todas as Alterações</button>
+    </div>
+
+    <script>
+        // Aqui usaremos uma lógica similar à que carrega os produtos no site,
+        // mas criando campos de texto (inputs) para você editar.
+        
+        async function carregarParaEdicao() {
+            const resposta = await fetch('produtos.json');
+            const dados = await resposta.json();
+            const corpo = document.getElementById('corpoTabela');
+            
+            // Vamos percorrer todas as categorias (computadores, notebooks, etc)
+            for (let categoria in dados) {
+                dados[categoria].forEach((prod, index) => {
+                    corpo.innerHTML += `
+                        <tr>
+                            <td>${prod.nome}</td>
+                            <td><input type="text" value="${prod.preco}" id="preco-${categoria}-${index}"></td>
+                            <td><input type="text" value="${prod.link}" id="link-${categoria}-${index}"></td>
+                            <td>✏️</td>
+                        </tr>
+                    `;
+                });
+            }
+        }
+        
+        window.onload = carregarParaEdicao;
+
+
+async function salvarAlteracoes() {
+    const TOKEN = "SEU_TOKEN_AQUI"; // O Personal Access Token que você gerou
+    const USUARIO = "SEU_USUARIO_GITHUB";
+    const REPOSITORIO = "NOME_DO_REPOSITORIO";
+    const CAMINHO_ARQUIVO = "produtos.json";
+
+    // 1. Pegar os dados novos dos campos que você editou na tela
+    // (Aqui simplificamos a lógica para capturar os inputs)
+    const novosDados = {
+        computadores: [ /* lógica para ler os inputs de computadores */ ],
+        notebooks: [ /* lógica para ler os inputs de notebooks */ ],
+        acessorios: [ /* lógica para ler os inputs de acessórios */ ]
+    };
+
+    // 2. O GitHub exige o "SHA" (um código de versão) do arquivo atual antes de mudar
+    const url = `https://api.github.com/repos/${USUARIO}/${REPOSITORIO}/contents/${CAMINHO_ARQUIVO}`;
+    
+    try {
+        const resFecth = await fetch(url);
+        const dadosArquivo = await resFecth.json();
+        const shaAtual = dadosArquivo.sha;
+
+        // 3. Enviar o novo arquivo para o GitHub
+        const resposta = await fetch(url, {
+            method: "PUT",
+            headers: {
+                "Authorization": `token ${TOKEN}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                message: "Atualização de preços via Painel Admin",
+                content: btoa(JSON.stringify(novosDados, null, 2)), // Converte para Base64 (exigência do GitHub)
+                sha: shaAtual
+            })
+        });
+
+        if (resposta.ok) {
+            alert("✅ Site atualizado com sucesso! Aguarde 1 minuto para as mudanças aparecerem.");
+        } else {
+            alert("❌ Erro ao salvar. Verifique o Token ou as configurações.");
+        }
+    } catch (erro) {
+        console.error("Erro na comunicação com GitHub:", erro);
+    }
+}
+
+    </script>
+</body>
+</html>

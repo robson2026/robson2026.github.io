@@ -1,0 +1,32 @@
+{
+  "computadores": [
+    {
+      "id": 1,
+      "nome": "PC Desktop Home Office",
+      "descricao": "Processador i5, 8GB RAM, SSD 240GB. Perfeito para estudos e trabalho.",
+      "preco": "2.400,00",
+      "imagem": "assets/img/pc-home.jpg",
+      "link": "https://www.magazineluiza.com.br/exemplo"
+    }
+  ],
+  "notebooks": [
+    {
+      "id": 2,
+      "nome": "Notebook Ultra Slim",
+      "descricao": "Tela 14 polegadas, bateria de longa duração, ideal para transporte.",
+      "preco": "3.150,00",
+      "imagem": "assets/img/note-slim.jpg",
+      "link": "https://shopee.com.br/exemplo"
+    }
+  ],
+  "acessorios": [
+    {
+      "id": 3,
+      "nome": "Mouse Sem Fio Ergonômico",
+      "descricao": "Conexão bluetooth, alta precisão e conforto.",
+      "preco": "89,90",
+      "imagem": "assets/img/mouse.jpg",
+      "link": "https://www.mercadolivre.com.br/exemplo"
+    }
+  ]
+}

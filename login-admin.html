@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso Restrito - RDAGUIAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilo específico para centralizar o login na tela */
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .btn-login {
+            width: 100%;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-login:hover { background: #0056b3; }
+        .error-msg { color: red; font-size: 0.9rem; display: none; }
+    </style>
+</head>
+<body style="background-color: #f0f2f5;">
+
+    <div class="login-container">
+        <img src="assets/img/logomarca.png" alt="RDAGUIAR" style="height: 60px; margin-bottom: 20px;">
+        <h2>Painel de Controle</h2>
+        <p>Digite sua senha de acesso</p>
+        
+        <input type="password" id="adminPassword" placeholder="Senha Administrativa">
+        <p id="error" class="error-msg">Senha incorreta!</p>
+        <button onclick="verificarSenha()" class="btn-login">Entrar</button>
+    </div>
+
+    <script>
+        function verificarSenha() {
+            const senhaDigitada = document.getElementById('adminPassword').value;
+            // Definiremos uma senha simples por enquanto
+            // No futuro, o App pode gerenciar isso de forma mais robusta
+            if (senhaDigitada === "sua-senha-aqui") { 
+                // Se a senha estiver certa, ele vai para a página de edição
+                window.location.href = "painel-admin.html";
+            } else {
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
